@@ -85,10 +85,11 @@ DATABASES = {
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.codeanyapp.com",
-    "https://*.herokuapp.com"
+    "https://*.herokuapp.com",
+    "https://*8000-christina5p-djangoblog-mt7knz7qrei.ws.codeinstitute-ide.net"
 ]
 
-    # Different solution for creaie SQL database direct in project 
+    # Different solution for create SQL database direct in project 
     #{
     #   'ENGINE': 'django.db.backends.sqlite3',
     #  'NAME': BASE_DIR / 'db.sqlite3',
