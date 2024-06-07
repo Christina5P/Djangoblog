@@ -21,10 +21,9 @@ class Post(models.Model):
 class Meta:
     ordering = ["-created_on"]
 
-    def __str__ (self):
-           return f"{self.title} | slug: {self.slug} | written by {self.author}"
+    def __str__(self):
+        return f"{self.title} | slug: {self.slug} | written by {self.author}"
 
-    
 
 class Comment(models.Model):
   post = models.ForeignKey(
@@ -43,5 +42,5 @@ class Comment(models.Model):
 class Meta:
     ordering = ["-created_on"]
 
-    def __str__ (self):
-          return f"{self.body} | by {self.author}"
+    def __str__(self):
+        return f"{self.body} | by {self.author}"
