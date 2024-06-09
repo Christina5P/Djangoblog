@@ -19,7 +19,7 @@
                                 </div>
                             </div>
                             <a href="#" class="post-link">
-                                <h2 class="card-title">{{ post.title }}</h2>
+                                <h2 class="card-title">{{ post.title }} <p class="card-text"> {{post.excerpt}} </p></h2>
                             </a>
 
                             <hr />
@@ -46,6 +46,9 @@
         </ul>
     </nav>
     {% endif %}
+    {% block Copyright%}
+    Copyright 2023 by Christina
+    {% endblock %}
 </div>
 
 <!-- index.html content ends here -->
