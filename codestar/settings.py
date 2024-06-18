@@ -31,7 +31,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "8000-christina5p-djangoblog-mt7knz7qrei.ws.codeinstitute-ide.net",
-    'myblogdjango-6870169da4a2.herokuapp.com/', 'localhost', '127.0.0.1'
+    'myblogdjango-6870169da4a2.herokuapp.com'
 ]
 
 # Application definition
