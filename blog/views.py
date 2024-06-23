@@ -90,3 +90,22 @@ def comment_delete(request, slug, comment_id):
 
     return HttpResponseRedirect(reverse('post_detail', args=[slug]))
       
+def review_edit(request, event_id, review_id):
+
+    if request.method == "POST":
+
+        queryset = Event.objects.all()
+        event = get_object_or_404 (queryset, pk=event_id)
+        review = get_object_or_404(Review, pk=event_id)
+        review_form = ReviewForm(data=request.POST, instance=review)
+
+        if review_form.is_valid() and review.reviewer == request.user:
+            review=review_form.save(commit=False)
+            review.reviewer= request.user
+            review.event = event
+            review.save()
+            message.add_message(request, messages.SUCCESS, 'Review updated!')
+        else:
+            messages.add_message(request.message.ERROR, 'Error updating!')
+
+    return HttpResponseRedirect(reverse('event_detail', args=[event_id]))
