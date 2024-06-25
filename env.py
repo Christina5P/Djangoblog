@@ -5,3 +5,7 @@ os.environ.setdefault(
 
 os.environ.setdefault(
     "SECRET_KEY", "mysecretkey2024")    
+
+os.environ.setdefault(
+    "CLOUDINARY_URL", "cloudinary://dvh69l0yv")
+    
