@@ -22,8 +22,7 @@ def post_detail(request, slug):
     post = get_object_or_404(queryset, slug=slug)
     comments = post.comments.all().order_by("-created_on")
     comment_count = post.comments.filter(approved=True).count()
-    comment_form = CommentForm()
-        
+   
     if request.method == "POST":
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
@@ -35,9 +34,9 @@ def post_detail(request, slug):
                 request, messages.SUCCESS,
                 'Comment submitted and awaiting approval'
             )
-    
     comment_form = CommentForm()
-
+        
+  
     return render(
         request,
         "blog/post_detail.html",
@@ -45,7 +44,7 @@ def post_detail(request, slug):
             "post": post,
             "comments": comments,
             "comment_count": comment_count,
-            "comment_form": comment_form,
+            "comment_form": comment_form
         },
     )
 
@@ -89,23 +88,4 @@ def comment_delete(request, slug, comment_id):
                              'You can only delete your own comments!')
 
     return HttpResponseRedirect(reverse('post_detail', args=[slug]))
-      
-def review_edit(request, event_id, review_id):
-
-    if request.method == "POST":
-
-        queryset = Event.objects.all()
-        event = get_object_or_404 (queryset, pk=event_id)
-        review = get_object_or_404(Review, pk=event_id)
-        review_form = ReviewForm(data=request.POST, instance=review)
-
-        if review_form.is_valid() and review.reviewer == request.user:
-            review=review_form.save(commit=False)
-            review.reviewer= request.user
-            review.event = event
-            review.save()
-            message.add_message(request, messages.SUCCESS, 'Review updated!')
-        else:
-            messages.add_message(request.message.ERROR, 'Error updating!')
-
-    return HttpResponseRedirect(reverse('event_detail', args=[event_id]))
+ 
